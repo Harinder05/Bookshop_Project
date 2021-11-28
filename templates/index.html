@@ -1,0 +1,48 @@
+{% extends "base.html" %} 
+        
+{% block tabtitle%} 
+        Homepage
+{% endblock %}
+
+{% block header%}
+        Bookshop
+{% endblock %}
+
+{% block body%}
+
+{% if session.name %}
+        <br>
+        <h2  style="text-align: center;">Hello {{session.name}}</h2><a href="/stock_level"><button>Stock level</button></a>
+    {% endif %}
+
+
+        
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        {% for row in books %}
+            <form action='/add_to_cart' method='post'>
+                <div class="col mb-5">
+                    <div class="card h-100">
+                     <img class="card-img-top" src="/static/book-images/{{ row[4] }}"alt="" height="400px", width="350px" />  
+                        
+                        <div class="card-body p-4">
+                            <div class="text-center">        
+                                <h5 class="fw-bolder">{{ row[0] }}</h5>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <p class="text-center">Price: {{ row[5] }}</p>
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" >Add to cart</a></div>          
+                        </div>
+                        
+                    </div>
+                </div>   
+            </form> 
+        {% endfor %}  
+        </div>
+    </div>
+</section>       
+{% endblock %}
