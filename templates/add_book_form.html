@@ -1,0 +1,68 @@
+{% extends "base.html" %} 
+        
+{% block tabtitle%} 
+        Add a new book
+{% endblock %}
+        {% block header%}
+                Add a new book
+        {% endblock %}
+{% block body%} 
+        
+
+    <div class="container">
+        <form action="/add_book" method ="POST" enctype='multipart/form-data'>
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Book Name</span>
+                    <input type="text" name="bookname" placeholder="Please enter book name" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Author Name</span>
+                    <input type="text" name="author" placeholder="Please enter author name" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">ISBN</span>
+                    <input type="text"name="isbn" placeholder="Please enter 13 digit ISBN" required>
+                </div>
+                
+                <div class="input-box">
+                    <span class="details">Upload Image</span>
+                    <input type="file" name="pic" required>
+                </div>
+
+                <div class="">
+                    <span class="">Publication Date</span>
+                    <input type="date" name="date"placeholder="enter name" required>
+                </div>
+                
+
+                <div class="input-box" id="desc">
+                    <span class="details">Book description</span>
+                    <textarea name="desc"placeholder="Please write book description" required></textarea>
+                </div>
+
+                <div class="slider-container">
+                    <span class="details">Trade Price: </span><input type="text" id="tp1" name="trade" oninput="tp2.value=tp1.value" required >
+                    <input class="slider" id="tp2" name="tp" type="range" value="24" min="0.01" max="100" step="0.01" oninput="tp1.value=tp2.value">
+                    
+                </div>
+
+                <div class="slider-container">
+                    <span class="details">Retail Price: </span><input type="text" id="rp1" name="retail" oninput="rp2.value=rp1.value" required >
+                    <input class="slider" id="rp2" name="rp" type="range" value="24" min="0.01" max="100" step="0.01" oninput="rp1.value=rp2.value">
+                </div>
+
+                <div class="slider-container">
+                    <span class="details">Quantity: </span><input type="text" id="q1" name="quant" oninput="q2.value=q1.value" required >
+                    <input class="slider" id="q2" name="quantity" type="range" value="10" min="1" max="20" oninput="q1.value=q2.value">
+                    
+                </div>
+
+                <div class="button">
+                    <input type="submit" value="Submit book">
+                </div>
+            </div>
+        </form>
+    </div>    
+{% endblock %}
